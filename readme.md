@@ -11,6 +11,9 @@ Adds easy internationalisation support to your jekyll. Allows you to use a view 
 ## Instructions
 1. Place the t.rb file in your _plugins directory.
 2. Set an environment variable in your .bashrc or .zshrc:
-    export JLANG="en"
+
+        export JLANG="en"
+
 3. Alternatively specify the locale in your _config.yml:
-    locale: "en"
+
+        locale: "en"
