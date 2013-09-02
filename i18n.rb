@@ -7,7 +7,7 @@ module Jekyll
     # 1. Create a _locales folder in your jekyll root.
     # 2. For each locale you would like to support, add a .yml file.
     # 3. Example: _locales/en.yml
-    # 4. Set an environment variable with ENV["JLANG"], or set a value in the
+    # 4. Set an environment variable with ENV["OCTOPRESS_LANG"], or set a value in the
     # site config vars. I.e. locale: "en"
     # 5. Call {% t hello_world %} in your views. It will search the .yml file
     # for the respective key and return the translation
@@ -40,12 +40,16 @@ module Jekyll
     end
 
     def set_locale(context)
-      @@locale = @@locale || ENV["JLANG"] || context.registers[:site].config["locale"]
+      @@locale = @@locale || ENV["OCTOPRESS_LANG"] || context.registers[:site].config["locale"]
       if @@locale
         @@locales = @@locales ||
           begin
-            YAML.load_file("_locales/#{@@locale}.yml")
-          rescue
+            #YAML.load_file("e:/github/wangmuy.github.io/source/_locales/#{@@locale}.yml")
+            YAML.load_file(File.expand_path(File.dirname(__FILE__)) + "/../source/_locales/#{@@locale}.yml")
+          rescue Exception => e
+	    puts File.expand_path(File.dirname(__FILE__)) + "../source/_locales"
+	    puts Dir.getwd
+	    puts e.message
             raise "please make sure that you: Created the _locales in your root jekyll folder
               && Properly created the language file for #{@@locale}. Caught "
           end
@@ -56,4 +60,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_tag('t', Jekyll::TTag)
+Liquid::Template.register_tag('i18n', Jekyll::TTag)

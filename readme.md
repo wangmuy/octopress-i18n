@@ -3,17 +3,17 @@
 Adds easy internationalisation support to your jekyll. Allows you to use a view helper to translate keys. Store the keys in yml files.
 
     // index.html
-    <span>{% t this_is_awesome %}</span>
+    <span>{% i18n this_is_awesome %}</span>
 
-    // _locales/en.yml
-    this_is_awesome: Pure awesomeness.
+    // source/_locales/en.yml
+    this_is_awesome: 酷毙了
 
 ## Instructions
-1. Place the t.rb file in your _plugins directory.
+1. Place the i18n.rb file in your source/_plugins directory.
 2. Set an environment variable in your .bashrc or .zshrc:
 
-        export JLANG="en"
+        export OCTOPRESS_LANG="zh_CN"
 
 3. Alternatively specify the locale in your _config.yml:
 
-        locale: "en"
+        locale: "zh_CN"
