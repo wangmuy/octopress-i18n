@@ -3,7 +3,7 @@
 Adds easy internationalisation support to your jekyll. Allows you to use a view helper to translate keys. Store the keys in yml files.
 
     // index.html
-    <span>{% this_is_awesome %}</span>
+    <span>{% t this_is_awesome %}</span>
 
     // _locales/en.yml
     this_is_awesome: Pure awesomeness.
